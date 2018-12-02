@@ -1,7 +1,8 @@
-
+// Array of soccer words 
 var wordArray = ["ball", "keeper", "hattrick", "goal", "redcard", "yellowcard",
     "referee", "pitch", "striker", "forward", "sweeper", "fullback", "midfielder",
     "handball", "header", "relegation", "touchline"]
+// End array
 
 var word = wordArray[Math.floor(Math.random() * wordArray.length)];
 
@@ -27,13 +28,13 @@ document.onkeyup = function (event) {
 
     // Captures the key press, converts it to lowercase, and saves it to a variable.
     var letterGuessed = event.key.toLowerCase();
-    console.log(letterGuessed)
 
     //adding guessed letter to html 
 
     remainingGuesses = remainingGuesses - 1;
 
-    console.log(remainingGuesses)
+    var node2 = document.createTextNode(letterGuessed+",");
+    para.appendChild(node2);
 }
 
 
