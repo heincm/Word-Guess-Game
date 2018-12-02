@@ -35,6 +35,10 @@ document.onkeyup = function (event) {
 
     var node2 = document.createTextNode(letterGuessed+",");
     para.appendChild(node2);
+
+    updateScore();
 }
 
-
+function updateScore() {
+    document.querySelector("#remainingGuesses").innerHTML = "Remaining Guesses: " + remainingGuesses;
+  }
