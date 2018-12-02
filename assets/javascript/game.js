@@ -11,8 +11,6 @@ var para = document.createElement("p");
 var answerArray = [];
 for (var i = 0; i < word.length; i++) {
     answerArray[i] = "_";
-    console.log(answerArray[i]);
-
     var node = document.createTextNode("_ ");
     para.appendChild(node);
     var element = document.getElementById("blanks");
@@ -29,14 +27,18 @@ document.onkeyup = function (event) {
     // Captures the key press, converts it to lowercase, and saves it to a variable.
     var letterGuessed = event.key.toLowerCase();
     updateScore();
-    //adding guessed letter to html 
+
 
     remainingGuesses = remainingGuesses - 1;
 
     var node2 = document.createTextNode(letterGuessed.toUpperCase() + ", ");
     para.appendChild(node2);
-   
+    var elementE = document.getElementById("letterGuessed");
+    elementE.appendChild(para);
+
 }
+
+
 
 function updateScore() {
     document.querySelector("#remainingGuesses").innerHTML = "Remaining Guesses: " + remainingGuesses;
