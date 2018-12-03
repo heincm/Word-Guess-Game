@@ -32,11 +32,6 @@ document.onkeyup = function (event) {
     var letterGuessed = event.key.toLowerCase();
     var foundLetter = false;
 
-    updateScore();
-
-    remainingGuesses = remainingGuesses - 1;
-
-
     if (!previousLetterArray.includes(letterGuessed)) {
         for (var j = 0; j < word.length; j++) {
             if (word[j] === letterGuessed) {
@@ -48,8 +43,10 @@ document.onkeyup = function (event) {
             para2.appendChild(node2);
             var elementE = document.getElementById("letterGuessed");
             elementE.appendChild(para2);
+            remainingGuesses = remainingGuesses - 1;
         }
         previousLetterArray.push(letterGuessed);
+        updateScore();
     }
     function updateScore() {
         document.querySelector("#remainingGuesses").innerHTML = "Remaining Guesses: " + remainingGuesses
