@@ -30,7 +30,7 @@ document.onkeyup = function (event) {
 
     // Captures the key press, converts it to lowercase, and saves it to a variable.
     var letterGuessed = event.key.toLowerCase();
-    
+    var foundLetter = false;
 
     updateScore();
 
@@ -38,16 +38,20 @@ document.onkeyup = function (event) {
 
 
     if (!previousLetterArray.includes(letterGuessed)) {
-        var node2 = document.createTextNode(letterGuessed.toUpperCase() + ", ");
-        para2.appendChild(node2);
-        var elementE = document.getElementById("letterGuessed");
-        elementE.appendChild(para2);
+        for (var j = 0; j < word.length; j++) {
+            if (word[j] === letterGuessed) {
+                answerArray[j] = letterGuessed;
+                foundLetter = true;
+            }
+        } if (foundLetter === false) {
+            var node2 = document.createTextNode(letterGuessed.toUpperCase() + ", ");
+            para2.appendChild(node2);
+            var elementE = document.getElementById("letterGuessed");
+            elementE.appendChild(para2);
+        }
         previousLetterArray.push(letterGuessed);
     }
-    
-}
-
-
-function updateScore() {
-    document.querySelector("#remainingGuesses").innerHTML = "Remaining Guesses: " + remainingGuesses
+    function updateScore() {
+        document.querySelector("#remainingGuesses").innerHTML = "Remaining Guesses: " + remainingGuesses
+    }
 }
