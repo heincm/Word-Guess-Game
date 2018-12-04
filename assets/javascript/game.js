@@ -5,30 +5,22 @@ var wordArray = ["ball", "keeper", "hattrick", "goal", "redcard", "yellowcard",
 // End array
 
 var word = wordArray[Math.floor(Math.random() * wordArray.length)];
-
-var para = document.createElement("p");
-
+var wordPara = document.createElement("p");
 var remainingLetters = word.length;
-
 var remainingGuesses = 10;
-
-var para2 = document.createElement("p")
-
+var guessedPara = document.createElement("p")
 var previousLetterArray = [];
-
 var answerArray = [];
-for (var i = 0; i < word.length; i++) {
 
+for (var i = 0; i < word.length; i++) {
     answerArray[i] = "_";
     var node = document.createTextNode("_ ");
-    para.appendChild(node);
-    var element = document.getElementById("blanks");
-    element.appendChild(para);
+    wordPara.appendChild(node);
+    var wordElement = document.getElementById("blanks");
+    wordElement.appendChild(wordPara);
 }
 
 document.onkeyup = function (event) {
-
-    // Captures the key press, converts it to lowercase, and saves it to a variable.
     var letterGuessed = event.key.toLowerCase();
     var foundLetter = false;
 
@@ -40,15 +32,23 @@ document.onkeyup = function (event) {
             }
         } if (foundLetter === false) {
             var node2 = document.createTextNode(letterGuessed.toUpperCase() + ", ");
-            para2.appendChild(node2);
-            var elementE = document.getElementById("letterGuessed");
-            elementE.appendChild(para2);
+            guessedPara.appendChild(node2);
+            var guessedElement = document.getElementById("letterGuessed");
+            guessedElement.appendChild(guessedPara);
             remainingGuesses = remainingGuesses - 1;
         }
         previousLetterArray.push(letterGuessed);
         updateScore();
+        updateBlanks();
+    }
+    if (remainingGuesses < 1) {
+        alert("you stink!");
     }
     function updateScore() {
-        document.querySelector("#remainingGuesses").innerHTML = "Remaining Guesses: " + remainingGuesses
+        document.querySelector("#remainingGuesses").innerHTML = remainingGuesses
+    }
+    function updateBlanks() {
+        var x = document.getElementById("blanks");
+        x.innerHTML = answerArray.join();
     }
 }
