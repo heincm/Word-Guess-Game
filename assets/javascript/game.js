@@ -4,7 +4,7 @@ var wordArray = ["ball", "keeper", "hattrick", "goal", "redcard", "yellowcard",
     "handball", "header", "relegation", "touchline"]
 // End array
 
-var word = "ball" //wordArray[Math.floor(Math.random() * wordArray.length)];
+var word = wordArray[Math.floor(Math.random() * wordArray.length)];
 var wordPara = document.createElement("p");
 var remainingLetters = word.length;
 var remainingGuesses = 10;
@@ -31,6 +31,7 @@ document.onkeyup = function (event) {
             if (word[j] === letterGuessed) {
                 answerArray[j] = letterGuessed.toUpperCase();
                 foundLetter = true;
+                remainingLetters--;
             }
         } if (foundLetter === false) {
             var node2 = document.createTextNode(letterGuessed.toUpperCase() + ", ");
@@ -51,8 +52,8 @@ document.onkeyup = function (event) {
     }
     function updateBlanks() {
         document.getElementById("blanks").innerHTML = answerArray.join(" ");
-        
-        if (answerArray.join() === "BALL"){
+
+        if (answerArray.join() === "BALL") {
             document.getElementById("image").innerHTML = "<img src=\"https://www.balloonsandweights.com/wp-content/uploads/2014/10/Mini-Foam-Soccer-Ball-Back-Side-BalloonsAndWeights.com_.jpg\" width=\"400px\" height=\"150px\">";
         }
     }
