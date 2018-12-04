@@ -4,13 +4,15 @@ var wordArray = ["ball", "keeper", "hattrick", "goal", "redcard", "yellowcard",
     "handball", "header", "relegation", "touchline"]
 // End array
 
-var word = wordArray[Math.floor(Math.random() * wordArray.length)];
+var word = "ball" //wordArray[Math.floor(Math.random() * wordArray.length)];
 var wordPara = document.createElement("p");
 var remainingLetters = word.length;
 var remainingGuesses = 10;
 var guessedPara = document.createElement("p")
 var previousLetterArray = [];
 var answerArray = [];
+
+
 
 for (var i = 0; i < word.length; i++) {
     answerArray[i] = "_";
@@ -27,7 +29,7 @@ document.onkeyup = function (event) {
     if (!previousLetterArray.includes(letterGuessed)) {
         for (var j = 0; j < word.length; j++) {
             if (word[j] === letterGuessed) {
-                answerArray[j] = letterGuessed;
+                answerArray[j] = letterGuessed.toUpperCase();
                 foundLetter = true;
             }
         } if (foundLetter === false) {
@@ -48,7 +50,10 @@ document.onkeyup = function (event) {
         document.querySelector("#remainingGuesses").innerHTML = remainingGuesses
     }
     function updateBlanks() {
-        var x = document.getElementById("blanks");
-        x.innerHTML = answerArray.join();
+        document.getElementById("blanks").innerHTML = answerArray.join(" ");
+        
+        if (answerArray.join() === "BALL"){
+            document.getElementById("image").innerHTML = "<img src=\"https://www.balloonsandweights.com/wp-content/uploads/2014/10/Mini-Foam-Soccer-Ball-Back-Side-BalloonsAndWeights.com_.jpg\" width=\"400px\" height=\"150px\">";
+        }
     }
 }
