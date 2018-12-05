@@ -12,7 +12,7 @@ var guessedPara = document.createElement("p")
 var previousLetterArray = [];
 var answerArray = [];
 
-
+var gameComplete; 
 
 for (var i = 0; i < word.length; i++) {
     answerArray[i] = "_";
@@ -25,6 +25,7 @@ for (var i = 0; i < word.length; i++) {
 document.onkeyup = function (event) {
     var letterGuessed = event.key.toLowerCase();
     var foundLetter = false;
+    gameComplete = false;
 
     if (!previousLetterArray.includes(letterGuessed)) {
         for (var j = 0; j < word.length; j++) {
@@ -41,20 +42,35 @@ document.onkeyup = function (event) {
             remainingGuesses = remainingGuesses - 1;
         }
         previousLetterArray.push(letterGuessed);
-        updateScore();
+        updateGuesses();
         updateBlanks();
     }
-    if (remainingGuesses < 1) {
-        alert("you stink!");
+    if (remainingGuesses === 0 || remainingLetters === 0) {
+        gameComplete = true;
+        resetGame();
     }
-    function updateScore() {
+    function updateGuesses() {
         document.querySelector("#remainingGuesses").innerHTML = remainingGuesses
     }
     function updateBlanks() {
         document.getElementById("blanks").innerHTML = answerArray.join(" ");
 
-        if (answerArray.join() === "BALL") {
+        if (answerArray.join() === word) {
             document.getElementById("image").innerHTML = "<img src=\"https://www.balloonsandweights.com/wp-content/uploads/2014/10/Mini-Foam-Soccer-Ball-Back-Side-BalloonsAndWeights.com_.jpg\" width=\"400px\" height=\"150px\">";
         }
     }
+}
+
+function resetGame(){
+    word = wordArray[Math.floor(Math.random() * wordArray.length)];
+    remainingGuesses = 10;
+    remainingLetters = word.length;
+    for (var i = 0; i < word.length; i++) {
+        answerArray[i] = "_";
+        var node = document.createTextNode("_ ");
+        wordPara.appendChild(node);
+        var wordElement = document.getElementById("blanks");
+        wordElement.appendChild(wordPara);
+    }
+    
 }
