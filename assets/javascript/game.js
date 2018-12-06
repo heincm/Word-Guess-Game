@@ -4,11 +4,11 @@ var wordArray = ["ball", "keeper", "hattrick", "goal", "redcard", "yellowcard",
     "handball", "header", "relegation"]
 // End array
 
-var word 
+var word
 var wordPara
 var remainingLetters
 var remainingGuesses = 10;
-var guessedPara 
+var guessedPara
 var previousLetterArray = [];
 var answerArray = [];
 
@@ -39,18 +39,24 @@ document.onkeyup = function (event) {
         updateBlanks();
     }
     if (remainingLetters === 0) {
-        document.getElementById("image").src="../Word-Guess-Game/assets/images/"+word+".jpg";
+        document.getElementById("image").src = "../Word-Guess-Game/assets/images/" + word + ".jpg";
         document.getElementById("wordBanner").innerHTML = word.toUpperCase();
         updateScore();
-        resetGame();  
+        if (remainingGuesses < 10) {
+            document.getElementById("letterGuessed").removeChild(guessedPara);
+        }
+        resetGame();
     }
-    
+
     if (remainingGuesses === 0) {
+        document.getElementById("letterGuessed").removeChild(guessedPara);
+        document.getElementById("image").src = "../Word-Guess-Game/assets/images/loser.gif";
+        document.getElementById("wordBanner").innerHTML = "YOU LOSE!";
         resetGame();
     }
 }
 
-   
+
 function updateGuesses() {
     document.querySelector("#remainingGuesses").innerHTML = remainingGuesses
 }
@@ -69,7 +75,7 @@ function resetGame() {
     guessedPara = document.createElement("p")
     updateGuesses();
     updateBlanks();
-    
+
     for (var i = 0; i < word.length; i++) {
         answerArray[i] = "_";
         var node = document.createTextNode("_ ");
@@ -85,5 +91,5 @@ function updateScore() {
 }
 
 function clearGuesses() {
-guessedElement.removeChild(guessedPara)
+    guessedElement.removeChild(guessedPara)
 }
