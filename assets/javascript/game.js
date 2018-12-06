@@ -39,9 +39,9 @@ document.onkeyup = function (event) {
         updateBlanks();
     }
     if (remainingLetters === 0) {
+        document.getElementById("image").src="../Word-Guess-Game/assets/images/"+word+".jpg";
         updateScore();
-        resetGame();
-        document.getElementById("image").innerHTML = "testing";  
+        resetGame();  
     }
     
     if (remainingGuesses === 0) {
@@ -59,11 +59,12 @@ function updateBlanks() {
 }
 
 function resetGame() {
-    word = wordArray[Math.floor(Math.random() * wordArray.length)];
+    word = "header"//wordArray[Math.floor(Math.random() * wordArray.length)];
     remainingGuesses = 10;
     remainingLetters = word.length;
     previousLetterArray = [];
     answerArray = [];
+    
     for (var i = 0; i < word.length; i++) {
         answerArray[i] = "_";
         var node = document.createTextNode("_ ");
