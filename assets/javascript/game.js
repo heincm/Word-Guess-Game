@@ -1,7 +1,7 @@
 // Array of soccer words 
 var wordArray = ["ball", "keeper", "hattrick", "goal", "redcard", "yellowcard",
     "referee", "pitch", "striker", "forward", "sweeper", "fullback", "midfielder",
-    "handball", "header", "relegation", "touchline"]
+    "handball", "header", "relegation"]
 // End array
 
 var word = wordArray[Math.floor(Math.random() * wordArray.length)];
@@ -59,7 +59,7 @@ function updateBlanks() {
 }
 
 function resetGame() {
-    word = "header"//wordArray[Math.floor(Math.random() * wordArray.length)];
+    word = wordArray[Math.floor(Math.random() * wordArray.length)];
     remainingGuesses = 10;
     remainingLetters = word.length;
     previousLetterArray = [];
