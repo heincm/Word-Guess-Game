@@ -40,6 +40,7 @@ document.onkeyup = function (event) {
     }
     if (remainingLetters === 0) {
         document.getElementById("image").src="../Word-Guess-Game/assets/images/"+word+".jpg";
+        document.getElementById("wordBanner").innerHTML = word.toUpperCase();
         updateScore();
         resetGame();  
     }
@@ -64,7 +65,7 @@ function resetGame() {
     remainingLetters = word.length;
     previousLetterArray = [];
     answerArray = [];
-    
+    updateGuesses();
     for (var i = 0; i < word.length; i++) {
         answerArray[i] = "_";
         var node = document.createTextNode("_ ");
