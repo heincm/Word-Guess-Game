@@ -14,8 +14,9 @@ var answerArray = [];
 
 var gameComplete;
 
-resetGame();
+var score = 0;
 
+resetGame();
 document.onkeyup = function (event) {
     var letterGuessed = event.key.toLowerCase();
     var foundLetter = false;
@@ -28,7 +29,8 @@ document.onkeyup = function (event) {
                 foundLetter = true;
                 remainingLetters--;
             }
-        } if (foundLetter === false) {
+        }
+        if (foundLetter === false) {
             var guessedNode = document.createTextNode(letterGuessed.toUpperCase() + ", ");
             guessedPara.appendChild(guessedNode);
             var guessedElement = document.getElementById("letterGuessed");
@@ -39,21 +41,24 @@ document.onkeyup = function (event) {
         updateGuesses();
         updateBlanks();
     }
+    if (remainingLetters === 0) {
+        updateScore();
+        resetGame();
+        document.getElementById("image").innerHTML = "testing";
+        
+    }
+    
     if (remainingGuesses === 0 || remainingLetters === 0) {
         gameComplete = true;
         resetGame();
     }
+   
     function updateGuesses() {
         document.querySelector("#remainingGuesses").innerHTML = remainingGuesses
     }
     function updateBlanks() {
         document.getElementById("blanks").innerHTML = answerArray.join(" ");
     }
-
-    if (remainingLetters === 0) {
-        document.getElementById("image").innerHTML = "testing";
-    }
-
 }
 
 function resetGame() {
@@ -69,4 +74,9 @@ function resetGame() {
         var wordElement = document.getElementById("blanks");
         wordElement.appendChild(wordPara);
     }
+}
+
+function updateScore() {
+    score += 1;
+    document.getElementById("score").innerHTML = score;
 }
