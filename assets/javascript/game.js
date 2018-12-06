@@ -12,15 +12,9 @@ var guessedPara = document.createElement("p")
 var previousLetterArray = [];
 var answerArray = [];
 
-var gameComplete; 
+var gameComplete;
 
-for (var i = 0; i < word.length; i++) {
-    answerArray[i] = "_";
-    var node = document.createTextNode("_ ");
-    wordPara.appendChild(node);
-    var wordElement = document.getElementById("blanks");
-    wordElement.appendChild(wordPara);
-}
+resetGame();
 
 document.onkeyup = function (event) {
     var letterGuessed = event.key.toLowerCase();
@@ -35,8 +29,8 @@ document.onkeyup = function (event) {
                 remainingLetters--;
             }
         } if (foundLetter === false) {
-            var node2 = document.createTextNode(letterGuessed.toUpperCase() + ", ");
-            guessedPara.appendChild(node2);
+            var guessedNode = document.createTextNode(letterGuessed.toUpperCase() + ", ");
+            guessedPara.appendChild(guessedNode);
             var guessedElement = document.getElementById("letterGuessed");
             guessedElement.appendChild(guessedPara);
             remainingGuesses = remainingGuesses - 1;
@@ -54,17 +48,20 @@ document.onkeyup = function (event) {
     }
     function updateBlanks() {
         document.getElementById("blanks").innerHTML = answerArray.join(" ");
-
-        if (answerArray.join() === word) {
-            document.getElementById("image").innerHTML = "<img src=\"https://www.balloonsandweights.com/wp-content/uploads/2014/10/Mini-Foam-Soccer-Ball-Back-Side-BalloonsAndWeights.com_.jpg\" width=\"400px\" height=\"150px\">";
-        }
     }
+
+    if (remainingLetters === 0) {
+        document.getElementById("image").innerHTML = "testing";
+    }
+
 }
 
-function resetGame(){
+function resetGame() {
     word = wordArray[Math.floor(Math.random() * wordArray.length)];
     remainingGuesses = 10;
     remainingLetters = word.length;
+    previousLetterArray = [];
+    answerArray = [];
     for (var i = 0; i < word.length; i++) {
         answerArray[i] = "_";
         var node = document.createTextNode("_ ");
@@ -72,5 +69,4 @@ function resetGame(){
         var wordElement = document.getElementById("blanks");
         wordElement.appendChild(wordPara);
     }
-    
 }
