@@ -12,15 +12,12 @@ var guessedPara = document.createElement("p")
 var previousLetterArray = [];
 var answerArray = [];
 
-var gameComplete;
-
 var score = 0;
 
 resetGame();
 document.onkeyup = function (event) {
     var letterGuessed = event.key.toLowerCase();
     var foundLetter = false;
-    gameComplete = false;
 
     if (!previousLetterArray.includes(letterGuessed)) {
         for (var j = 0; j < word.length; j++) {
@@ -44,21 +41,21 @@ document.onkeyup = function (event) {
     if (remainingLetters === 0) {
         updateScore();
         resetGame();
-        document.getElementById("image").innerHTML = "testing";
-        
+        document.getElementById("image").innerHTML = "testing";  
     }
     
-    if (remainingGuesses === 0 || remainingLetters === 0) {
-        gameComplete = true;
+    if (remainingGuesses === 0) {
         resetGame();
     }
+}
+
    
-    function updateGuesses() {
-        document.querySelector("#remainingGuesses").innerHTML = remainingGuesses
-    }
-    function updateBlanks() {
-        document.getElementById("blanks").innerHTML = answerArray.join(" ");
-    }
+function updateGuesses() {
+    document.querySelector("#remainingGuesses").innerHTML = remainingGuesses
+}
+
+function updateBlanks() {
+    document.getElementById("blanks").innerHTML = answerArray.join(" ");
 }
 
 function resetGame() {
