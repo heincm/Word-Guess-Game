@@ -10,3 +10,7 @@ To win the game, you must correctly guess all of the letters in the soccer term 
 ### Losing
 
 Should you run out of guesses before correctly guessing the word, you will see a picture and text notifying you that you have lost. The game will automatically reset upon losing and you can play again by simply making another guess on the keyboard. 
+
+### Theme Inspiration
+
+I love soccer, and I'm a huge Atlanta United fan. This project gave me a fun way to show my love for the team while getting my homework done. 
