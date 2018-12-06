@@ -66,6 +66,7 @@ function resetGame() {
     previousLetterArray = [];
     answerArray = [];
     updateGuesses();
+    updateBlanks();
     for (var i = 0; i < word.length; i++) {
         answerArray[i] = "_";
         var node = document.createTextNode("_ ");
