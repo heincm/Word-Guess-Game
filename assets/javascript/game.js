@@ -4,11 +4,11 @@ var wordArray = ["ball", "keeper", "hattrick", "goal", "redcard", "yellowcard",
     "handball", "header", "relegation"]
 // End array
 
-var word = wordArray[Math.floor(Math.random() * wordArray.length)];
-var wordPara = document.createElement("p");
-var remainingLetters = word.length;
+var word 
+var wordPara
+var remainingLetters
 var remainingGuesses = 10;
-var guessedPara = document.createElement("p")
+var guessedPara 
 var previousLetterArray = [];
 var answerArray = [];
 
@@ -65,8 +65,11 @@ function resetGame() {
     remainingLetters = word.length;
     previousLetterArray = [];
     answerArray = [];
+    wordPara = document.createElement("p");
+    guessedPara = document.createElement("p")
     updateGuesses();
     updateBlanks();
+    
     for (var i = 0; i < word.length; i++) {
         answerArray[i] = "_";
         var node = document.createTextNode("_ ");
@@ -79,4 +82,8 @@ function resetGame() {
 function updateScore() {
     score += 1;
     document.getElementById("score").innerHTML = score;
+}
+
+function clearGuesses() {
+guessedElement.removeChild(guessedPara)
 }
