@@ -15,14 +15,17 @@
 </head>
 
 <body>
-    
-        <div class="jumbotron">
-            <h1 class="display-4">Soccer Hangman</h1>
-            <p class="lead">Test your soccer knowledge by guessing these common terms</p>
-
-        </div>
-        <div class="container bg-light">
+    <div class="jumbotron">
+        <h1 class="display-4">Soccer Hangman</h1>
+        <p class="lead">Test your soccer knowledge by guessing these common terms</p>
+    </div>
+    <div class="container bg-light">
         <div class="row">
+            <div class="col-md-12 text-center">
+                <img id="winner" src="">
+            </div>
+        </div>
+        <div class="row winnerText">
             <div class="col-md-6 col-sm-6 text-center">
                 <h2 id="wordBanner"></h2>
                 <img class="img-fluid" id="image" src="../Word-Guess-Game/assets/images/placeholder.jpg" alt="placeholder">
@@ -48,7 +51,6 @@
                         <h4>Letters Guessed: </h4>
                         <p id="letterGuessed"></p>
                     </div>
-                    <div><img src=""></div>
                 </div>
             </div>
         </div>

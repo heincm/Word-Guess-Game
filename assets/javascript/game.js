@@ -1,7 +1,7 @@
 // Array of soccer words 
 var wordArray = ["ball", "keeper", "hattrick", "goal", "redcard", "yellowcard",
-    "referee", "pitch", "striker", "forward", "sweeper", "fullback", "midfielder",
-    "handball", "header", "relegation"]
+"referee", "pitch", "striker", "forward", "sweeper", "fullback", "midfielder",
+"handball", "header", "relegation"]
 // End array
 
 var word
@@ -12,6 +12,13 @@ var guessedPara
 var previousLetterArray = [];
 var answerArray = [];
 var score = 0;
+var storage
+var removed
+
+function removeWord() {
+    storage = wordArray.indexOf(word);
+    removed = wordArray.splice(storage, 1);
+}
 
 function updateGuesses() {
     document.querySelector("#remainingGuesses").innerHTML = remainingGuesses
@@ -22,6 +29,10 @@ function updateBlanks() {
 }
 
 function resetGame() {
+    if (wordArray.length === 0) {
+        document.getElementsByClassName("winnerText").innerHTML = "WINNER!"
+        document.getElementById("winner").src= "../Word-Guess-Game/assets/images/winner.gif";
+    }
     word = wordArray[Math.floor(Math.random() * wordArray.length)];
     remainingGuesses = 10;
     remainingLetters = word.length;
@@ -81,6 +92,7 @@ document.onkeyup = function (event) {
         if (remainingGuesses < 10) {
             document.getElementById("letterGuessed").removeChild(guessedPara);
         }
+        removeWord();
         resetGame();
     }
 
