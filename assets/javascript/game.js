@@ -11,8 +11,44 @@ var remainingGuesses = 10;
 var guessedPara
 var previousLetterArray = [];
 var answerArray = [];
-
 var score = 0;
+
+function updateGuesses() {
+    document.querySelector("#remainingGuesses").innerHTML = remainingGuesses
+}
+
+function updateBlanks() {
+    document.getElementById("blanks").innerHTML = answerArray.join(" ");
+}
+
+function resetGame() {
+    word = wordArray[Math.floor(Math.random() * wordArray.length)];
+    remainingGuesses = 10;
+    remainingLetters = word.length;
+    previousLetterArray = [];
+    answerArray = [];
+    wordPara = document.createElement("p");
+    guessedPara = document.createElement("p")
+    updateGuesses();
+    updateBlanks();
+
+    for (var i = 0; i < word.length; i++) {
+        answerArray[i] = "_";
+        var node = document.createTextNode("_ ");
+        wordPara.appendChild(node);
+        var wordElement = document.getElementById("blanks");
+        wordElement.appendChild(wordPara);
+    }
+}
+
+function updateScore() {
+    score += 1;
+    document.getElementById("score").innerHTML = score;
+}
+
+function clearGuesses() {
+    guessedElement.removeChild(guessedPara)
+}
 
 resetGame();
 document.onkeyup = function (event) {
@@ -54,42 +90,4 @@ document.onkeyup = function (event) {
         document.getElementById("wordBanner").innerHTML = "YOU LOSE!";
         resetGame();
     }
-}
-
-
-function updateGuesses() {
-    document.querySelector("#remainingGuesses").innerHTML = remainingGuesses
-}
-
-function updateBlanks() {
-    document.getElementById("blanks").innerHTML = answerArray.join(" ");
-}
-
-function resetGame() {
-    word = wordArray[Math.floor(Math.random() * wordArray.length)];
-    remainingGuesses = 10;
-    remainingLetters = word.length;
-    previousLetterArray = [];
-    answerArray = [];
-    wordPara = document.createElement("p");
-    guessedPara = document.createElement("p")
-    updateGuesses();
-    updateBlanks();
-
-    for (var i = 0; i < word.length; i++) {
-        answerArray[i] = "_";
-        var node = document.createTextNode("_ ");
-        wordPara.appendChild(node);
-        var wordElement = document.getElementById("blanks");
-        wordElement.appendChild(wordPara);
-    }
-}
-
-function updateScore() {
-    score += 1;
-    document.getElementById("score").innerHTML = score;
-}
-
-function clearGuesses() {
-    guessedElement.removeChild(guessedPara)
 }
