@@ -1,6 +1,15 @@
+html {
+    background: url("../images/atlanta.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #000;
+}
 body {
-    background-image: url("../images/atlanta.jpg")
+    background: transparent;
 }
 .container{
     width: 90%;
+    background-color: rgba(255, 255, 255, 0.8);
 }
