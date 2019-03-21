@@ -23,7 +23,6 @@ Should you run out of guesses before correctly guessing the word, you will see a
 
 ![lose_game](assets/Images/lose_game.gif)
 
-
 The game will automatically reset upon losing and you can play again by simply making another guess on the keyboard. 
 
 ### Theme Inspiration
