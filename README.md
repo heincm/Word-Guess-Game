@@ -9,13 +9,11 @@ To win the game, you must correctly guess all of the letters in the soccer term 
 
 ![start_and_win](assets/Images/start_and_win.gif)
 
-
 The page will keep track of the number of games you have won. The game will also automatically reset upon winning and you can play again by simply making another guess on the keyboard.  
 
 Should you guess all the word correctly, you'll see a special game winning image at the top of the screen.
 
 ![win_all](assets/Images/win_all.gif)
-
 
 ### Losing
 
