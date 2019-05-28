@@ -7,19 +7,19 @@ The game is played solely with the keyboard. Pushing any key will either result 
 
 To win the game, you must correctly guess all of the letters in the soccer term that is blank. Upon guessing all letters correctly, you will see a picture and text of the word you just guessed. 
 
-![start_and_win](assets/Images/start_and_win.gif)
+![start_and_win](assets/images/start_and_win.gif)
 
 The page will keep track of the number of games you have won. The game will also automatically reset upon winning and you can play again by simply making another guess on the keyboard.  
 
 Should you guess all the word correctly, you'll see a special game winning image at the top of the screen.
 
-![win_all](assets/Images/win_all.gif)
+![win_all](assets/images/win_all.gif)
 
 ### Losing
 
 Should you run out of guesses before correctly guessing the word, you will see a picture and text notifying you that you have lost. 
 
-![lose_game](assets/Images/lose_game.gif)
+![lose_game](assets/images/lose_game.gif)
 
 The game will automatically reset upon losing and you can play again by simply making another guess on the keyboard. 
 
