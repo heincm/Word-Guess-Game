@@ -1,19 +1,19 @@
 // Array of soccer words 
-var wordArray = ["ball", "keeper", "hattrick", "goal", "redcard", "yellowcard",
+let wordArray = ["ball", "keeper", "hattrick", "goal", "redcard", "yellowcard",
 "referee", "pitch", "striker", "forward", "sweeper", "fullback", "midfielder",
 "handball", "header", "relegation"]
 // End array
 
-var word
-var wordPara
-var remainingLetters
-var remainingGuesses = 10;
-var guessedPara
-var previousLetterArray = [];
-var answerArray = [];
-var score = 0;
-var storage
-var removed
+let word
+let wordPara
+let remainingLetters
+let remainingGuesses = 10;
+let guessedPara
+let previousLetterArray = [];
+let answerArray = [];
+let score = 0;
+let storage
+let removed
 
 function removeWord() {
     storage = wordArray.indexOf(word);
@@ -43,11 +43,11 @@ function resetGame() {
     updateGuesses();
     updateBlanks();
 
-    for (var i = 0; i < word.length; i++) {
+    for (let i = 0; i < word.length; i++) {
         answerArray[i] = "_";
-        var node = document.createTextNode("_ ");
+        let node = document.createTextNode("_ ");
         wordPara.appendChild(node);
-        var wordElement = document.getElementById("blanks");
+        let wordElement = document.getElementById("blanks");
         wordElement.appendChild(wordPara);
     }
 }
@@ -63,11 +63,11 @@ function clearGuesses() {
 
 resetGame();
 document.onkeyup = function (event) {
-    var letterGuessed = event.key.toLowerCase();
-    var foundLetter = false;
+    let letterGuessed = event.key.toLowerCase();
+    let foundLetter = false;
 
     if (!previousLetterArray.includes(letterGuessed)) {
-        for (var j = 0; j < word.length; j++) {
+        for (let j = 0; j < word.length; j++) {
             if (word[j] === letterGuessed) {
                 answerArray[j] = letterGuessed.toUpperCase();
                 foundLetter = true;
@@ -75,9 +75,9 @@ document.onkeyup = function (event) {
             }
         }
         if (foundLetter === false) {
-            var guessedNode = document.createTextNode(letterGuessed.toUpperCase() + ", ");
+            let guessedNode = document.createTextNode(letterGuessed.toUpperCase() + ", ");
             guessedPara.appendChild(guessedNode);
-            var guessedElement = document.getElementById("letterGuessed");
+            let guessedElement = document.getElementById("letterGuessed");
             guessedElement.appendChild(guessedPara);
             remainingGuesses = remainingGuesses - 1;
         }
